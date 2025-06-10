@@ -1,0 +1,146 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "myClients": "Meus Clientes",
+    "about": "Sobre Nós",
+    "myAccount": "Minha Conta",
+    "auth": {
+      "login": "Login",
+      "register": "Cadastro",
+      "forgotPassword": "Esqueceu sua senha?",
+      "backToHome": "Voltar para a página inicial"
+    },
+    "footer": {
+      "about": "Sobre Nós",
+      "myClients": "Meus Clientes",
+      "myAccount": "Minha Conta",
+      "contact": "Contato"
+    }
+  },
+  "common": {
+    "appName": "Vizite"
+  },
+  "playground": {
+    "title": "¡Hola mundo!",
+    "subtitle": "Esta es una página de prueba para probar la aplicación. ¡Tira los dados para ver si has iniciado sesión, si sale el número 6, estás dentro!",
+    "about": "Ir a la página Acerca de",
+    "someRedux": "Algo de Redux...",
+    "darkMode": "Modo Oscuro",
+    "enabled": "Activado",
+    "disabled": "Desactivado",
+    "authentication": "Autenticación",
+    "loggedIn": "Sesión Iniciada",
+    "notLoggedIn": "Sesión No Iniciada",
+    "language": "Idioma",
+    "logout": "Cerrar Sesión",
+    "name": "Nombre",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono"
+  },
+  "home": {
+    "home": "Inicio",
+    "title": "¡Vamos!",
+    "subtitle": "Esta es una página de prueba para probar la aplicación. ¡Tira los dados para ver si has iniciado sesión, si sale el número 6, estás dentro!",
+    "about": "Ir a la página Acerca de",
+    "someRedux": "Algo de Redux...",
+    "darkMode": "Modo Oscuro",
+    "enabled": "Activado",
+    "disabled": "Desactivado",
+    "authentication": "Autenticación",
+    "loggedIn": "Sesión Iniciada",
+    "notLoggedIn": "Sesión No Iniciada",
+    "profile": "Perfil",
+    "bookingHistory": "Historial de Reservas",
+    "settings": "Configuración",
+    "logout": "Cerrar Sesión",
+    "name": "Nombre",
+    "language": "Idioma"
+  },
+  "booking": {  
+    "booking": "Reservas",
+    "title": "Reservas",
+    "description": "Descripción de la Reserva",
+    "submit": "Enviar",
+    "goToBooking": "Ir a Reservas",
+    "bookingConfirmed": "Reserva Confirmada",
+    "yourPersonalInformation": "Tu Información Personal",
+    "fullName": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "petInformation": "Información de la Mascota",
+    "petName": "Nombre de la Mascota",
+    "petBreed": "Raza de la Mascota",
+    "petAge": "Edad de la Mascota",
+    "petWeight": "Peso de la Mascota",
+    "selectDatesForStay": "Selecciona las Fechas para la Estancia",
+    "checkInDate": "Fecha de Check-in",
+    "checkOutDate": "Fecha de Check-out",
+    "selectServices": "Selecciona los Servicios",
+    "specialRequests": "Peticiones Especiales",
+    "additionalInformation": "Información Adicional",
+    "additionalInformationPlaceholder": "Cualquier requisito especial o notas para tu reserva...",
+    "bookingSummary": "Resumen de la Reserva",
+    "selectedServices": "Seleccionados",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "totalPrice": "Precio Total",
+    "completeBooking": "Completar Reserva",
+    "totalServices": "Total de Servicios",
+    "noServicesSelected": "No se han seleccionado servicios"
+  },
+  "myAccount": {
+    "myAccount": "Mi Cuenta",
+    "title": "Mi Cuenta",
+    "description": "Descripción de Mi Cuenta",
+    "submit": "Enviar",
+    "profileInformation": "Información del Perfil",
+    "recentBookings": "Reservas Recientes",
+    "petGrooming": "Peluquería de Mascotas",
+    "bookedFor": "Reservado para el {date}",
+    "confirmed": "Confirmado",
+    "preferences": "Preferencias",
+    "emailNotifications": "Notificaciones por Correo Electrónico",
+    "receiveUpdates": "Recibir actualizaciones sobre tus reservas",
+    "smsNotifications": "Notificaciones por SMS",
+    "receiveTextMessages": "Recibir mensajes de texto para actualizaciones importantes",
+    "profile": "Perfil",
+    "bookingHistory": "Historial de Reservas",
+    "settings": "Configuración",
+    "logout": "Cerrar Sesión",
+    "user": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono"
+    },
+    "address": {
+      "title": "Dirección",
+      "street": "Calle",
+      "number": "Número",
+      "additionalInfo": "Información Adicional",
+      "zipCode": "Código Postal",
+      "city": "Ciudad",
+      "country": "País"
+    }
+  },
+  "auth": {
+    "title": "Autenticación",
+    "description": "Descripción de Autenticación",
+    "submit": "Enviar",
+    "signIn": {
+      "title": "Iniciar Sesión",
+      "message": "Inicia sesión en tu cuenta",
+      "button": "Iniciar Sesión"
+    }    
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "description": "Bienvenido a Next Playground, tu destino principal para soluciones innovadoras de desarrollo web. Nos dedicamos a crear experiencias digitales excepcionales que combinan tecnología de vanguardia con un diseño centrado en el usuario.",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Nuestra misión es empoderar a empresas e individuos con aplicaciones web modernas, escalables y eficientes. Nos esforzamos por ofrecer soluciones que no solo cumplan, sino que superen las expectativas de nuestros clientes."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "description": "Visualizamos un panorama digital donde la tecnología mejore sin problemas las experiencias humanas. A través de nuestro compromiso con la excelencia y la innovación, nuestro objetivo es estar a la vanguardia del desarrollo web, estableciendo nuevos estándares en la industria."
+    }
+  }
+} 

@@ -1,0 +1,203 @@
+{
+  "common": {
+    "appName": "Vizite"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "myClients": "Meus Clientes",
+    "about": "Sobre Nós",
+    "myAccount": "Minha Conta",
+    "settings": "Configurações",
+    "logout": "Sair da Sessão",
+    "auth": {
+      "login": "Login",
+      "register": "Cadastro",
+      "forgotPassword": "Esqueceu sua senha?",
+      "backToHome": "Voltar para a página inicial"
+    },
+    "terms": {
+      "title": "Termos de Uso",
+      "privacyPolicy": "Política de Privacidade",
+      "description": "Ao criar sua conta você concorda com {title} e {privacyPolicy}."
+    }
+  },
+  "routes": {
+    "home": "home",
+    "myClients": "my-clients",
+    "about": "about",
+    "myAccount": "my-account",
+    "settings": "settings",
+    "logout": "logout",
+    "auth": {
+      "login": "auth/login",
+      "register": "auth/register",
+      "forgotPassword": "auth/forgot-password"
+    }
+  },
+  "auth": {
+    "title": "Autenticação",
+    "description": "Descrição de Autenticação",
+    "submit": "Enviar",
+    "signIn": {
+      "title": "Iniciar Sessão",
+      "message": "Inicia sessão na sua conta",
+      "button": "Iniciar Sessão"
+    },
+    "hidePassword": "Ocultar Senha",
+    "showPassword": "Mostrar Senha",
+    "email": "Email",
+    "password": "Senha",
+    "forgotPassword": "Esqueceu sua senha?",
+    "createAccount": "Criar conta"
+  },
+  "home": {
+    "home": "Inicio",
+    "title": "¡Vamos!",
+    "subtitle": "Esta es una página de prueba para probar la aplicación. ¡Tira los dados para ver si has iniciado sesión, si sale el número 6, estás dentro!",
+    "about": "Ir a la página Acerca de",
+    "someRedux": "Algo de Redux...",
+    "darkMode": "Modo Oscuro",
+    "enabled": "Activado",
+    "disabled": "Desactivado",
+    "authentication": "Autenticación",
+    "loggedIn": "Sesión Iniciada",
+    "notLoggedIn": "Sesión No Iniciada",
+    "profile": "Perfil",
+    "bookingHistory": "Historial de Reservas",
+    "settings": "Configuración",
+    "logout": "Cerrar Sesión",
+    "name": "Nombre",
+    "language": "Idioma"
+  },
+  "clients": {
+    "title": "Meus Clientes",
+    "subtitle": "Gerencie seus clientes com facilidade",
+    "description": "Descrição de Meus Clientes",
+    "add": "Novo Cliente",
+    "search": "Buscar cliente...",
+    "name": "Nome",
+    "email": "Email",
+    "phone": "Telefone",
+    "view": "Detalhes",
+    "noClients": "Nenhum cliente cadastrado",
+    "notes": "Notas",
+    "note": "Nota",
+    "notePlaceholder": "Digite uma nota para o cliente...",
+    "noteDescriptionPlaceholder": "Digite uma nota para o cliente...",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "addNote": "Adicionar Nota",  
+    "deleteConfirm": "Tem certeza que deseja excluir este cliente?",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "editClient": "Editar Cliente",
+    "editClientDescription": "Edite as informações do cliente",
+    "editClientSubmit": "Salvar",
+    "editClientCancel": "Cancelar",
+    "editClientNote": "Adicionar Nota",
+    "editClientNotePlaceholder": "Digite uma nota para o cliente...",
+    "editClientNoteDescription": "Digite uma nota para o cliente...",
+    "editClientNoteDescriptionPlaceholder": "Digite uma nota para o cliente...",
+    "editClientNoteSave": "Salvar",
+    "editClientNoteCancel": "Cancelar",
+    "at": "às",
+    "information": "Informações",
+    "lastRegistration": "Último Registro",
+    "addPhoto": "Adicionar Foto", 
+    "showAllNotes": "Ver Todas as Notas",
+    "agenda": "Agenda"
+  },
+  "booking": {  
+    "booking": "Reservas",
+    "title": "Reservas",
+    "description": "Descripción de la Reserva",
+    "submit": "Enviar",
+    "goToBooking": "Ir a Reservas",
+    "bookingConfirmed": "Reserva Confirmada",
+    "yourPersonalInformation": "Tu Información Personal",
+    "fullName": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "petInformation": "Información de la Mascota",
+    "petName": "Nombre de la Mascota",
+    "petBreed": "Raza de la Mascota",
+    "petAge": "Edad de la Mascota",
+    "petWeight": "Peso de la Mascota",
+    "selectDatesForStay": "Selecciona las Fechas para la Estancia",
+    "checkInDate": "Fecha de Check-in",
+    "checkOutDate": "Fecha de Check-out",
+    "selectServices": "Selecciona los Servicios",
+    "specialRequests": "Peticiones Especiales",
+    "additionalInformation": "Información Adicional",
+    "additionalInformationPlaceholder": "Cualquier requisito especial o notas para tu reserva...",
+    "bookingSummary": "Resumen de la Reserva",
+    "selectedServices": "Seleccionados",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "totalPrice": "Precio Total",
+    "completeBooking": "Completar Reserva",
+    "totalServices": "Total de Servicios",
+    "noServicesSelected": "No se han seleccionado servicios"
+  },
+  "myAccount": {
+    "myAccount": "Minha Conta",
+    "title": "Minha Conta",
+    "description": "Descrição de Minha Conta",
+    "submit": "Enviar",
+    "profileInformation": "Informação do Perfil",
+    "recentBookings": "Reservas Recentes",
+    "petGrooming": "Peluquería de Mascotas",
+    "bookedFor": "Reservado para o {date}",
+    "confirmed": "Confirmado",
+    "preferences": "Preferencias",
+    "emailNotifications": "Notificações por Email",
+    "receiveUpdates": "Receber atualizações sobre suas reservas",
+    "smsNotifications": "Notificações por SMS",
+    "receiveTextMessages": "Receber mensagens de texto para atualizações importantes",
+    "profile": "Perfil",
+    "bookingHistory": "Histórico de Reservas",
+    "settings": "Configuração",
+    "logout": "Sair da Sessão",
+    "user": {
+      "name": "Nome",
+      "email": "Email",
+      "phone": "Telefone"
+    },
+    "address": {
+      "title": "Endereço",
+      "street": "Rua",
+      "number": "Número",
+      "additionalInfo": "Informação Adicional",
+      "zipCode": "CEP",
+      "city": "Cidade",
+      "state": "Estado",
+      "country": "País"
+    } 
+  },
+  "about": {
+    "title": "Sobre Nós",
+    "description": "Bem-vindo ao Vizite, seu assistente pessoal para cuidar de seus clientes.",
+    "mission": {
+      "title": "Nossa Missão",
+      "description": "Nossa missão é ajudar você a cuidar de seus clientes de forma eficiente e personalizada."
+    },
+    "vision": {
+      "title": "Nossa Visão",
+      "description": "Nosso objetivo é ser o melhor assistente pessoal para cuidar de seus clientes."
+    },
+    "contactUs": {
+      "title": "Contato",
+      "description": "Entre em contato conosco para saber mais sobre nossos serviços e soluções.",
+      "phone": "Telefone",
+      "email": "Email",
+      "address": "Endereço"
+    },
+    "termsOfUse": {
+      "title": "Termos de Uso",
+      "description": "Termos de Uso"
+    },
+    "privacyPolicy": {
+      "title": "Política de Privacidade",
+      "description": "Política de Privacidade"
+    }
+  }
+} 

@@ -1,0 +1,52 @@
+{
+  "clients": [    
+    { 
+      "id": 1,
+      "name": "Pedro Souza",
+      "email": "pedro.s@email.com",
+      "phone": "(11) 99999-9999",
+      "notes": [
+        { "id": 1, "date": "2025-01-01", "note": "Cliente VIP. Prefere contato por WhatsApp." },
+        { "id": 2, "date": "2025-01-02", "note": "Cliente regular. Não gosta de contato por WhatsApp." },
+        { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
+      ],
+      "lastRegistration": "2025-01-03"
+    },
+    {
+      "id": 2,
+      "name": "Carlos Silva",
+      "email": "carlos@email.com",
+      "phone": "(21) 98888-8888",
+      "notes": [
+        { "id": 1, "date": "2025-01-01", "note": "Cliente VIP. Prefere contato por WhatsApp." },
+        { "id": 2, "date": "2025-01-02", "note": "Cliente regular. Não gosta de contato por WhatsApp." },
+        { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
+      ],
+      "lastRegistration": "2025-01-03"
+    },
+    { 
+      "id": 3,
+      "name": "Maria Oliveira",
+      "email": "maria@email.com",
+      "phone": "(31) 97777-7777",
+      "notes": [
+        { "id": 1, "date": "2025-01-01", "note": "Cliente VIP. Prefere contato por WhatsApp." },
+        { "id": 2, "date": "2025-01-02", "note": "Cliente regular. Não gosta de contato por WhatsApp." },
+        { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
+      ],
+      "lastRegistration": "2025-01-03"
+    },
+    {
+      "id": 4,
+      "name": "João Pereira",
+      "email": "joao@email.com",
+      "phone": "(41) 96666-6666",
+      "notes": [
+        { "id": 1, "date": "2025-01-01", "note": "Cliente VIP. Prefere contato por WhatsApp." },
+        { "id": 2, "date": "2025-01-02", "note": "Cliente regular. Não gosta de contato por WhatsApp." },
+        { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
+      ],
+      "lastRegistration": "2025-01-03"
+    }
+  ]
+}
