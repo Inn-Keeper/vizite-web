@@ -5,7 +5,6 @@ import { Link } from '@/i18n/navigation';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from './LanguageSwitcher';
-import ToggleDarkMode from './ToggleDarkMode';
 import { Toaster } from 'react-hot-toast';
 import { useState } from 'react';
 import Footer from './Footer';
@@ -58,12 +57,7 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
               >
                 {t('navigation.home')}
               </Link>
-              <Link
-                href={`/${t('routes.myClients')}`}
-                className={`${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} px-2 sm:px-3 lg:px-4 py-2 rounded-md text-sm font-medium`}
-              >
-                {t('navigation.myClients')}
-              </Link>
+              
               <Link
                  href={`/${t('routes.about')}`}
                 className={`${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} px-2 sm:px-3 lg:px-4 py-2 rounded-md text-sm font-medium`}
@@ -80,6 +74,12 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
                     >
                       {t('navigation.myAccount')}
                     </Link>
+                    <Link
+                      href={`/${t('routes.myClients')}`}
+                className={`${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} px-2 sm:px-3 lg:px-4 py-2 rounded-md text-sm font-medium`}
+              >
+                {t('navigation.myClients')}
+              </Link>
                     <button
                       onClick={handleLogout}
                       className={`${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} px-2 sm:px-3 lg:px-4 py-2 rounded-md text-sm font-medium`}
@@ -98,7 +98,6 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
               }
 
               <LanguageSwitcher />
-              <ToggleDarkMode />
             </div>
           </div>
         </div>
@@ -156,7 +155,6 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
             
             <div className="flex items-center space-x-2 mt-2">
               <LanguageSwitcher />
-              <ToggleDarkMode />
             </div>
           </div>
         </div>
