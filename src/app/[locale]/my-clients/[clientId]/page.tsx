@@ -100,7 +100,7 @@ export default function ClientDetailsPage({ params }: { params: Promise<{ client
       <div className="w-full border-t border-gray-700 my-2" />
 
       {/* Info Section */}
-      <div className="w-full h-48 flex flex-col gap-3">
+      <div className="w-full h-48flex flex-col gap-3">
         <div className="text-xs font-semibold text-gray-400 mb-1">{t('information', { defaultValue: 'Informações' })}</div>
         <div>
           <div className="text-xs text-gray-500">{t('email', { defaultValue: 'Email' })}</div>

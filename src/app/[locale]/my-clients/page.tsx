@@ -35,7 +35,7 @@ export default function ClientsPage() {
           <input
             type="text"
             placeholder={t('search', { defaultValue: 'Buscar cliente...' })}
-            className={`w-full pl-12 pr-4 py-3 rounded-full border ${darkMode ? 'border-gray-700' : 'border-gray-300'} ${darkMode ? 'bg-gray-800' : 'bg-white'} ${darkMode ? 'text-gray-100' : 'text-gray-900'} shadow focus:outline-none focus:ring-2 focus:ring-purple-400`}
+            className={`w-full pl-12 pr-4 py-3 border rounded-lg ${darkMode ? 'border-gray-700' : 'border-gray-300'} ${darkMode ? 'bg-gray-800' : 'bg-white'} ${darkMode ? 'text-gray-100' : 'text-gray-900'} shadow focus:outline-none focus:ring-2 focus:ring-purple-400`}
           />
         </div>
         {/* Client Cards */}

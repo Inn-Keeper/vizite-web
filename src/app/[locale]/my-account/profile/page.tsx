@@ -4,11 +4,10 @@ import { useTranslations } from 'next-intl';
 
 export default function ProfilePage() {
   const t = useTranslations('myAccount');
-  const { darkMode   } = useAppSelector((state) => state.theme);
   const { name } = useAppSelector((state) => state.user);
 
   return (
-    <div className={`w-full px-8 py-8 ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
+    <div className={`w-full px-8 py-8 mt-6`}>
       {/* Profile Information Section */}
       <h2 className="text-2xl font-bold mb-8">{t('profileInformation')}</h2>
       <form className="space-y-12">

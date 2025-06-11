@@ -10,7 +10,7 @@ export default function GradientContainer(
   return (
       <div className={`min-h-screen mx-0 w-full h-full items-start justify-start h-[${height}] relative ${className}
         ${isDarkMode[darkMode ? 'dark' : 'light']} 
-        rounded shadow p-4 flex flex-col items-center gap-6`}>
+        rounded shadow p-12 flex flex-col items-center gap-6`}>
         {children}
       </div>
   );
