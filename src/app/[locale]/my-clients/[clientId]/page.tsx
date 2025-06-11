@@ -1,18 +1,20 @@
 "use client";
 
+import React from "react";
 import { ArrowLeftIcon, CameraIcon, PlusIcon, ListBulletIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import { formatDateDDMMYYYY } from '@/utils/utils';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
-export default function ClientDetailsPage({ params }: { params: { clientId: string } }) {
-  const { clientId } = params;
+import { Client } from '@/types/appTypes';
+  
+export default function ClientDetailsPage({ params }: { params: Promise<{ clientId: string; locale: string }> }) {
+  const { clientId } = React.use(params); 
   const t = useTranslations('clients');
   const router = useRouter();
 
-  const [clients, setClients] = useState<any[]>([]);
+  const [clients, setClients] = useState<Client[]>([]);
 
   useEffect(() => {
     fetch('/clients-mock.json')
@@ -80,7 +82,7 @@ export default function ClientDetailsPage({ params }: { params: { clientId: stri
         {/* Last Registration */}
         <div className="w-full flex justify-between items-center">
           <span className="text-xs font-semibold text-gray-400">{t('lastRegistration', { defaultValue: 'Último Registro' })}</span>
-          <span className="text-xs text-gray-300">{formatDateDDMMYYYY(client?.lastRegistration)}</span>
+          <span className="text-xs text-gray-300">{formatDateDDMMYYYY(client?.lastRegistration ?? null)}</span>
         </div>
 
         {/* Notes Section */}

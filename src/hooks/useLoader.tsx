@@ -9,17 +9,17 @@ interface LoaderProps {
 
 export default function useLoader(): (props: LoaderProps) => ReactNode {
   const Loader = ({
-    message = 'Loading...',
-    className = 'col-span-2 flex items-center justify-center py-8',
-    spinnerClassName = 'animate-spin h-6 w-6 text-blue-500',
-    textClassName = 'text-xl'
+    message = '',
+    className = 'fixed top-0 left-0 w-screen h-screen z-[99999] flex items-center justify-center bg-black bg-opacity-0 pointer-events-auto',
+    spinnerClassName = 'animate-spin h-24 w-24 text-blue-500',
+    textClassName = 'text-2xl text-white'
   }: LoaderProps) => {
     return (
       <div className={className}>
-        <div className={`flex items-center gap-2 ${textClassName}`}>
-          <svg className={spinnerClassName} viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+        <div className={`flex flex-col items-center gap-4 ${textClassName}`} style={{ pointerEvents: 'auto' }}>
+          <svg className={spinnerClassName} viewBox="0 0 48 48">
+            <circle className="opacity-25" cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="6" fill="none" />
+            <path className="opacity-75" fill="currentColor" d="M24 4a20 20 0 0 1 20 20h-6a14 14 0 0 0-14-14V4z" />
           </svg>
           {message}
         </div>

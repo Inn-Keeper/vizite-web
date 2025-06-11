@@ -5,10 +5,10 @@
   "navigation": {
     "home": "Inicio",
     "myClients": "Meus Clientes",
-    "about": "Sobre Nós",
+    "support": "Suporte",
     "myAccount": "Minha Conta",
     "settings": "Configurações",
-    "logout": "Sair da Sessão",
+    "logout": "Sair",
     "auth": {
       "login": "Login",
       "register": "Cadastro",
@@ -23,9 +23,12 @@
   },
   "routes": {
     "home": "home",
-    "myClients": "my-clients",
-    "about": "about",
-    "myAccount": "my-account",
+    "my-clients": "my-clients",
+    "support": "support",
+    "my-account": {
+      "profile": "my-account/profile",
+      "settings": "my-account/settings"
+    },
     "settings": "settings",
     "logout": "logout",
     "auth": {
@@ -33,6 +36,18 @@
       "register": "auth/register",
       "forgotPassword": "auth/forgot-password"
     }
+  },
+  "settings": {
+    "title": "Configurações",
+    "notifications": "Notificações",
+    "notificationsDescription": "Gerencie suas preferências de notificação.",
+    "privacy": "Privacidade",
+    "privacyDescription": "Controle suas configurações de privacidade.",
+    "privacyPolicy": "Política de Privacidade",
+    "language": "Idioma",
+    "languageDescription": "Selecione o idioma do aplicativo.",
+    "theme": "Tema",
+    "themeDescription": "Alterne entre modo claro e escuro."
   },
   "auth": {
     "title": "Autenticação",
@@ -48,7 +63,9 @@
     "email": "Email",
     "password": "Senha",
     "forgotPassword": "Esqueceu sua senha?",
-    "createAccount": "Criar conta"
+    "forgotPasswordDescription": "Informe o seu e-mail de cadastro da sua conta para enviarmos um link para que possas alterar a sua senha.",
+    "createAccount": "Criar conta",
+    "backToLogin": "Voltar para login"
   },
   "home": {
     "home": "Inicio",
@@ -66,8 +83,10 @@
     "bookingHistory": "Historial de Reservas",
     "settings": "Configuración",
     "logout": "Cerrar Sesión",
-    "name": "Nombre",
-    "language": "Idioma"
+    "language": "Idioma",
+    "description": "Acesse todos os seus clientes, conta e configurações.",
+    "welcome": "Bem vindo,",
+    "name": "Dalton Castro"
   },
   "clients": {
     "title": "Meus Clientes",
@@ -199,5 +218,13 @@
       "title": "Política de Privacidade",
       "description": "Política de Privacidade"
     }
-  }
+  },
+  "terms": {
+    "title": "Termos de Uso",
+    "description": "Termos de Uso",
+    "privacyPolicy": {
+      "title": "Política de Privacidade",
+      "description": "Política de Privacidade"
+    }
+  }  
 } 

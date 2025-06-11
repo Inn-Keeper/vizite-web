@@ -1,10 +1,11 @@
 'use client';
-import { useAppSelector } from '@/store/store';
-import { FaUser, FaHistory, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import { useAuth } from '@/hooks/useAuth';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
-import { useLocale } from 'next-intl';
+import { setAuthenticated } from '@/store/slices/userSlice';
+import { useRouter } from 'next/navigation';
 
 export default function MyAccountLayout({
   children,
@@ -17,13 +18,28 @@ export default function MyAccountLayout({
   const { requireAuth } = useAuth();
   const { showAuthPrompt, content } = requireAuth();
   const pathname = usePathname();
-  const locale = useLocale();
-
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  console.log('showAuthPrompt', showAuthPrompt);
   if (showAuthPrompt) {
     return <>{content}</>;
   }
 
-  const isActive = (path: string) => pathname === `/${locale}${path}`;
+  const isActive = (path: string) => {
+    console.log('pathname', pathname);
+    console.log('path', path);
+    return pathname === `${path}`;
+  };
+  
+  const hoverBgColor = darkMode ? 'hover:bg-gray-800/50' : 'hover:bg-gray-100/50';
+  const hoverBgGradient = darkMode ? 'hover:bg-gradient-to-br from-purple-800/80 via-purple-500/50 to-purple-800/80' : 'hover:bg-gradient-to-br from-purple-100/50 via-purple-200/50 to-purple-100/50';
+  const textColor = darkMode ? 'text-gray-300' : 'text-gray-700';
+
+  const handleLogout = () => {
+    dispatch(setAuthenticated(false));
+    router.refresh();
+    router.push('/auth/login');
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -32,7 +48,7 @@ export default function MyAccountLayout({
         <div className="md:col-span-1">
           <div className={`rounded-xl p-4 ${darkMode ? 'bg-gray-800' : 'bg-white shadow-sm'}`}>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-purple-500/60 flex items-center justify-center">
                 <FaUser className="text-white text-xl" />
               </div>
               <div>
@@ -45,30 +61,19 @@ export default function MyAccountLayout({
                 href="/my-account/profile"
                 className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg transition-colors ${
                   isActive('/my-account/profile')
-                    ? 'bg-blue-500 text-white'
-                    : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                    ? `${textColor} bg-purple-500/60`
+                    : `${textColor} ${hoverBgColor} ${hoverBgGradient}`
                 }`}
               >
                 <FaUser className="text-lg" />
                 <span>{t('profile')}</span>
               </Link>
               <Link
-                href="/my-account/booking-history"
-                className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg transition-colors ${
-                  isActive('/my-account/booking-history')
-                    ? 'bg-blue-500 text-white'
-                    : 'hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
-              >
-                <FaHistory className="text-lg" />
-                <span>{t('bookingHistory')}</span>
-              </Link>
-              <Link
                 href="/my-account/settings"
                 className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg transition-colors ${
                   isActive('/my-account/settings')
-                    ? 'bg-blue-500 text-white'
-                    : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                    ? `${textColor} bg-purple-500/60`
+                    : `${textColor} ${hoverBgColor} ${hoverBgGradient}`
                 }`}
               >
                 <FaCog className="text-lg" />
@@ -78,7 +83,7 @@ export default function MyAccountLayout({
                 className="w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-red-500"
                 onClick={() => {
                   // Add logout functionality here
-                  console.log('Logout clicked');
+                  handleLogout();
                 }}
               >
                 <FaSignOutAlt className="text-lg" />

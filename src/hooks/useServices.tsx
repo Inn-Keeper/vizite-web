@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Service, ServicesResponse } from "@/app/[locale]/home/types";
+import { Service, ServicesResponse } from "@/types/appTypes";
 
 export default function useServices() {
     const [services, setServices] = useState<Service[]>([]);

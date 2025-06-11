@@ -10,6 +10,7 @@ interface AuthInputProps {
   name?: string;
   autoComplete?: string;
   className?: string;
+  showLabel?: boolean;
 }
 
 export default function AuthInput({
@@ -22,10 +23,11 @@ export default function AuthInput({
   name,
   autoComplete,
   className = '',
+  showLabel = true,
 }: AuthInputProps) {
   return (
     <div className={`w-full flex flex-col gap-2 ${className}`}>
-      <label className="text-gray-200 text-[16px] font-normal leading-[1.2] dark:text-gray-400" htmlFor={name}>{label}</label>
+      {showLabel && <label className="text-gray-200 text-[16px] font-normal leading-[1.2] dark:text-gray-400" htmlFor={name}>{label}</label>}
       <input
         id={name}
         name={name}
