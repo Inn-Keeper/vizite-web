@@ -47,6 +47,54 @@
         { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
       ],
       "lastRegistration": "2025-01-03"
+    },
+    {
+      "id": 5,
+      "name": "Josinaldo da Silva",
+      "email": "josinaldo@email.com",
+      "phone": "(41) 96666-6666",
+      "notes": [
+        { "id": 1, "date": "2025-01-01", "note": "Cliente VIP. Prefere contato por WhatsApp." },
+        { "id": 2, "date": "2025-01-02", "note": "Cliente regular. Não gosta de contato por WhatsApp." },
+        { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
+      ],
+      "lastRegistration": "2025-01-04"
+    },
+    {
+      "id": 6,
+      "name": "Pirolino da Silva",
+      "email": "josinaldo@email.com",
+      "phone": "(41) 96666-6666",
+      "notes": [
+        { "id": 1, "date": "2025-01-01", "note": "Cliente VIP. Prefere contato por WhatsApp." },
+        { "id": 2, "date": "2025-01-02", "note": "Cliente regular. Não gosta de contato por WhatsApp." },
+        { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
+      ],
+      "lastRegistration": "2025-01-05"
+    },
+    {
+      "id": 7,
+      "name": "Ezequielo da Silva",
+      "email": "ezequiel@email.com",
+      "phone": "(41) 96666-6666",
+      "notes": [
+        { "id": 1, "date": "2025-01-01", "note": "Cliente VIP. Prefere contato por WhatsApp." },
+        { "id": 2, "date": "2025-01-02", "note": "Cliente regular. Não gosta de contato por WhatsApp." },
+        { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
+      ],
+      "lastRegistration": "2025-01-06"
+    },
+    {
+      "id": 8,
+      "name": "Laildo da Silva",
+      "email": "laildo@email.com",
+      "phone": "(41) 96666-6666",
+      "notes": [
+        { "id": 1, "date": "2025-01-01", "note": "Cliente VIP. Prefere contato por WhatsApp." },
+        { "id": 2, "date": "2025-01-02", "note": "Cliente regular. Não gosta de contato por WhatsApp." },
+        { "id": 3, "date": "2025-01-03", "note": "Não gosta de contato por WhatsApp." }
+      ],
+      "lastRegistration": "2025-01-07"
     }
   ]
 }

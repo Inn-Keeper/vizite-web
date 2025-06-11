@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { setAuthenticated } from '@/store/slices/userSlice';
 import { useRouter } from 'next/navigation';
+import GradientContainer from '@/components/GradientContainer';
 
 export default function MyAccountLayout({
   children,
@@ -42,11 +43,11 @@ export default function MyAccountLayout({
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <GradientContainer>
+      <div className="flex justify-start md:flex-row gap-6 w-full">
         {/* Sidebar Navigation */}
-        <div className="md:col-span-1">
-          <div className={`rounded-xl p-4 ${darkMode ? 'bg-gray-800' : 'bg-white shadow-sm'}`}>
+        <div className="md:col-span-1 w-1/4">
+          <div className='p-4'>
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-purple-500/60 flex items-center justify-center">
                 <FaUser className="text-white text-xl" />
@@ -98,6 +99,6 @@ export default function MyAccountLayout({
           {children}
         </div>
       </div>
-    </div>
+    </GradientContainer>
   );
 } 

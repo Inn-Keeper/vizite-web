@@ -19,3 +19,20 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.notes-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #a78bfa #27272a; /* purple-400 thumb, gray-800 track */
+}
+.notes-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 8px;
+}
+.notes-scrollbar::-webkit-scrollbar-thumb {
+  background: #a78bfa; 
+  border-radius: 8px;
+}
+.notes-scrollbar::-webkit-scrollbar-track {
+  background: #27272a; /* gray-800 */
+  border-radius: 8px;
+}

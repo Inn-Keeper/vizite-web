@@ -9,22 +9,24 @@ interface AuthPrompt {
 }
 
 export function useAuth() {
-  const { isAuthenticated } = useAppSelector((state) => state.user);
   const t = useTranslations('auth');
+
+  const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
 
   // TODO: Add a loading state
   // TODO: JWT token check
   const router = useRouter();
   const requireAuth = useCallback((): AuthPrompt => {
+    
     if (!isAuthenticated) {
       return {
         showAuthPrompt: true,
         content: (
-          <div className="flex flex-col items-center justify-center min-h-[60vh] bg-red-500">
-            <div className="text-center">
-              <h1 className="text-2xl font-bold mb-4">{t('signIn.title')}</h1>
-              <p className="text-gray-500 dark:text-gray-400 mb-6">{t('signIn.message')}</p>
-              <button onClick={() => router.push('/login')} className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
+          <div className="flex mt-12 flex-col items-center justify-center min-h-[60vh]">
+            <div className="w-full max-w-md bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6">
+              <h1 className="text-2xl font-bold text-white mb-4">{t('signIn.title')}</h1>
+              <p className="text-gray-300 dark:text-gray-400 mb-6 text-center">{t('signIn.message')}</p>
+              <button onClick={() => router.push('/auth/login')} className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
                 {t('signIn.button')}
               </button>
             </div>
@@ -36,7 +38,7 @@ export function useAuth() {
   }, [isAuthenticated, router, t]);
 
   return {
-    isAuthenticated: true,
+    isAuthenticated,
     requireAuth
   };
 } 

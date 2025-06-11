@@ -28,7 +28,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start mt-[50px] px-4">
+    <div className="min-h-screen flex flex-col items-center justify-start mt-[100px] px-4">
       <div className="flex flex-col w-full max-w-2xl gap-8">
         <div className="text-center">
           <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500 dark:from-purple-400 dark:to-blue-300 mb-2">

@@ -25,7 +25,7 @@ export default function AddNotesPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8">
-      <div className="w-full h-[60vh] max-w-md bg-gray-800/90 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <div className="w-full h-[60vh] bg-gray-800/90 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         <button
           onClick={() => router.back()}
           className="absolute left-6 top-6 text-gray-400 hover:text-purple-400 transition"

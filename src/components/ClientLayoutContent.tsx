@@ -9,6 +9,7 @@ import { setAuthenticated } from '@/store/slices/userSlice';
 import Image from 'next/image';
 import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 import MenuItem from './MenuItem';
+import { redirect } from 'next/navigation';
 
 export default function ClientLayoutContent({ children }: { children: React.ReactNode }) {
   const t = useTranslations();
@@ -16,9 +17,10 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
   const [menuOpen, setMenuOpen] = useState(false);
   const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
   const dispatch = useAppDispatch();
-
   const handleLogout = () => {
     dispatch(setAuthenticated(false));
+    redirect(`/${t('routes.auth.login')}`);
+    return null;
   };
 
   return (
@@ -35,8 +37,8 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Link href={`/${t('routes.home')}`} 
-              className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              <Link href={`/${t('routes.home')}`}
+                className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <Image className="hover:scale-105 transition-transform duration-300" src="/logo.svg" alt="Logo" width={30} height={30} />
               </Link>
             </div>
@@ -81,19 +83,20 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
                       onClick={() => handleLogout()}
                       label={t('navigation.logout')}
                     />
+                    <MenuItem
+                      href={`/${t('routes.my-account.settings')}`}
+                      icon={<Cog6ToothIcon />}
+                      iconClassName="hover:rotate-90 transition-transform duration-300"
+                    />
                   </>
                 ) : (
                   <MenuItem
-                    href={`/${t('routes.auth.login')}`}
-                    label={t('navigation.auth.login')}
+                    href={`/${t('routes.support')}`}
+                    label={t('navigation.support')}
                   />
                 )
               }
-              <MenuItem
-                href={`/${t('routes.my-account.settings')}`}
-                icon={<Cog6ToothIcon />}
-                iconClassName="`hover:rotate-90 transition-transform duration-300`"
-              />
+
             </div>
           </div>
         </div>
@@ -102,7 +105,7 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
         <div className={`md:hidden ${menuOpen ? 'block' : 'hidden'}`} id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-800">
 
-            
+
             {
               isAuthenticated ? (
                 <>
@@ -132,10 +135,10 @@ export default function ClientLayoutContent({ children }: { children: React.Reac
                 </>
               ) : (
                 <MenuItem
-                  href={`/${t('routes.auth.login')}`}
+                  href={`/${t('routes.support')}`}
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   onClick={() => setMenuOpen(false)}
-                  label={t('navigation.auth.login')}
+                  label={t('navigation.support')}
                 />
               )
             }
