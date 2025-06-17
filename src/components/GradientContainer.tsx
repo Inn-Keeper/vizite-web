@@ -1,8 +1,8 @@
-import { useAppSelector } from "@/store/store";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function GradientContainer(
   { children, height = '90vh', className = '' }: { children: React.ReactNode, height?: string, className?: string }) {
-    const { darkMode } = useAppSelector((state) => state.theme); 
+    const { darkMode } = useTheme();
     const isDarkMode: { [key: string]: string } = {
       dark: 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900',
       light: 'bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50',

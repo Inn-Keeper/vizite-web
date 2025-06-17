@@ -1,12 +1,13 @@
 'use client';
-import { useAppDispatch, useAppSelector } from '@/store/store';
+// import { useAppSelector } from '@/store/store';
 import { FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import { useAuth } from '@/hooks/useAuth';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
-import { setAuthenticated } from '@/store/slices/userSlice';
-import { useRouter } from 'next/navigation';
 import GradientContainer from '@/components/GradientContainer';
+import { useUser } from '@/hooks/useUser';
+import { useSignOut } from '@/hooks/useSignOut';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function MyAccountLayout({
   children,
@@ -14,21 +15,19 @@ export default function MyAccountLayout({
   children: React.ReactNode;
 }) {
   const t = useTranslations('myAccount');
-  const { darkMode } = useAppSelector((state) => state.theme);
-  const { name } = useAppSelector((state) => state.user);
+  const { darkMode } = useTheme();
+  console.log('darkMode', darkMode);
+  const { data: user } = useUser();
   const { requireAuth } = useAuth();
   const { showAuthPrompt, content } = requireAuth();
   const pathname = usePathname();
-  const dispatch = useAppDispatch();
-  const router = useRouter();
-  console.log('showAuthPrompt', showAuthPrompt);
+  const signOut = useSignOut();
+  
   if (showAuthPrompt) {
     return <>{content}</>;
   }
 
   const isActive = (path: string) => {
-    console.log('pathname', pathname);
-    console.log('path', path);
     return pathname === `${path}`;
   };
   
@@ -37,9 +36,11 @@ export default function MyAccountLayout({
   const textColor = darkMode ? 'text-gray-300' : 'text-gray-700';
 
   const handleLogout = () => {
-    dispatch(setAuthenticated(false));
-    router.refresh();
-    router.push('/auth/login');
+    signOut.mutate(undefined, {
+      onError: (error) => {
+        console.error('Logout error:', error);
+      },
+    });
   };
 
   return (
@@ -53,7 +54,7 @@ export default function MyAccountLayout({
                 <FaUser className="text-white text-xl" />
               </div>
               <div>
-                <h2 className="font-semibold">{name}</h2>
+                <h2 className="font-semibold">{user?.name}</h2>
                 <p className="text-sm text-gray-500 dark:text-gray-400">Member</p>
               </div>
             </div>

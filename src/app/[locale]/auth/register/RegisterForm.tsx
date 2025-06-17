@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import AuthLogo from '../../components/AuthLogo';
-import AuthInput from '../../components/AuthInput';
-import AuthButton from '../../components/AuthButton';
+import AuthLogo from '../../../../components/Logo';
+import AuthInput from '../../../../components/Input';
+import AuthButton from '../../../../components/Button';
 import Link from 'next/link';
+import { useSignUp } from '@/hooks/useSignUp';
 
 export default function RegisterForm() {
   const [name, setName] = useState('');
@@ -12,11 +13,26 @@ export default function RegisterForm() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const signUp = useSignUp();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    // TODO: handle registration logic
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      password: formData.get('password') as string,
+    };
+    signUp.mutate(data, {
+      onSuccess: (response) => {
+        // handle success, e.g., redirect or show message
+        console.log('Registration successful', response);
+      },
+      onError: (error) => {
+        // handle error, e.g., show error message
+        console.error('Registration error', error);
+      },
+    });
   };
 
   return (
@@ -66,6 +82,8 @@ export default function RegisterForm() {
           Ao criar sua conta você concorda com nossos termos e política de uso.
         </p>
       </div>
+      {signUp.isError && <div className="text-red-500">Erro ao cadastrar. Tente novamente.</div>}
+      {signUp.isSuccess && <div className="text-green-500">Cadastro realizado com sucesso!</div>}
     </div>
   );
 } 

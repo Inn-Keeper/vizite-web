@@ -1,15 +1,15 @@
-import { useAppSelector } from '@/store/store';
+import { useTheme } from '@/context/ThemeContext';
 import React from 'react';
 
 interface ClientCardProps {
   name: string;
   email: string;
-  phone: string;
+  phone: string;  
   onView: () => void;
 }
 
 export default function ClientCard({ name, email, phone, onView }: ClientCardProps) {
-  const { darkMode } = useAppSelector((state) => state.theme);
+  const { darkMode } = useTheme();
   const darkModeClass = darkMode ? 'bg-purple-400/20' : 'bg-purple-900/30';
   console.log('darkModeClass', darkModeClass);
   return (

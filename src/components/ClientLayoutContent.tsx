@@ -1,24 +1,24 @@
 'use client';
 
-import { useAppDispatch, useAppSelector } from '@/store/store';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import Footer from './Footer';
-import { setAuthenticated } from '@/store/slices/userSlice';
 import Image from 'next/image';
 import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 import MenuItem from './MenuItem';
 import { redirect } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function ClientLayoutContent({ children }: { children: React.ReactNode }) {
   const t = useTranslations();
-  const { darkMode } = useAppSelector((state) => state.theme);
+  const { darkMode } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-  const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
-  const dispatch = useAppDispatch();
+
+  const { isAuthenticated } = useAuth();
+ 
   const handleLogout = () => {
-    dispatch(setAuthenticated(false));
     redirect(`/${t('routes.auth.login')}`);
     return null;
   };

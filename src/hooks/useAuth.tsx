@@ -1,7 +1,9 @@
 import React, { ReactNode, useCallback } from 'react';
-import { useAppSelector } from '@/store/store';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import { useSignOut } from './useSignOut';
+import { useSignIn } from './useSignIn';
+import { useUser } from '@/hooks/useUser';
 
 interface AuthPrompt {
   showAuthPrompt: boolean;
@@ -10,15 +12,13 @@ interface AuthPrompt {
 
 export function useAuth() {
   const t = useTranslations('auth');
-
-  const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
-
-  // TODO: Add a loading state
-  // TODO: JWT token check
   const router = useRouter();
+
+  const user = useUser(); 
+  const isAuthenticated = !!user.data?.isAuthenticated;
+
   const requireAuth = useCallback((): AuthPrompt => {
-    
-    if (!isAuthenticated) {
+    if (!isAuthenticated && !user.isLoading) {
       return {
         showAuthPrompt: true,
         content: (
@@ -35,10 +35,13 @@ export function useAuth() {
       };
     }
     return { showAuthPrompt: false, content: null };
-  }, [isAuthenticated, router, t]);
+  }, [isAuthenticated, user.isLoading, router, t]);
 
   return {
     isAuthenticated,
-    requireAuth
+    requireAuth,
+    signOut: useSignOut(),
+    signIn: useSignIn(),
+    user: useUser()
   };
 } 

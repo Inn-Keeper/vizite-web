@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import ClientLayout from '@/components/ClientLayout';
 import { ReactNode } from 'react';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 type Props = {
   children: ReactNode;
@@ -25,12 +26,14 @@ export default async function RootLayout({ children, params }: Props) {
   }
 
   return (
-    <html lang={locale}>
-      <body>
-        <ClientLayout locale={locale} messages={messages}>
-          {children}
-        </ClientLayout>
-      </body>
-    </html>
+    <ThemeProvider>
+      <html lang={locale}>
+        <body>
+          <ClientLayout locale={locale} messages={messages}>
+            {children}
+          </ClientLayout>
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
+import { useTheme } from '@/context/ThemeContext';
 
-interface AuthInputProps {
+interface InputProps {
   label: string;
   type?: string;
   value: string;
@@ -13,7 +14,7 @@ interface AuthInputProps {
   showLabel?: boolean;
 }
 
-export default function AuthInput({
+export default function Input({
   label,
   type = 'text',
   value,
@@ -24,7 +25,8 @@ export default function AuthInput({
   autoComplete,
   className = '',
   showLabel = true,
-}: AuthInputProps) {
+}: InputProps) {
+  const { darkMode } = useTheme();
   return (
     <div className={`w-full flex flex-col gap-2 ${className}`}>
       {showLabel && <label className="text-gray-200 text-[16px] font-normal leading-[1.2] dark:text-gray-400" htmlFor={name}>{label}</label>}
@@ -36,7 +38,7 @@ export default function AuthInput({
         onChange={onChange}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className="h-12 px-4 rounded-lg text-[16px] font-normal leading-[1.2] border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#2A3647] text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#5938B9] transition shadow-sm"
+        className={`h-12 px-4 rounded-lg text-[16px] font-normal leading-[1.2] border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#2A3647] text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#5938B9] transition shadow-sm ${darkMode ? 'dark' : ''}`}
       />
       {error && <span className="text-xs text-red-500 mt-1">{error}</span>}
     </div>

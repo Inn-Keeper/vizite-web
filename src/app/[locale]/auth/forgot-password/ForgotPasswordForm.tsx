@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import AuthLogo from '../../components/AuthLogo';
-import AuthInput from '../../components/AuthInput';
-import AuthButton from '../../components/AuthButton';
+import AuthLogo from '../../../../components/Logo';
+import AuthInput from '../../../../components/Input';
+import AuthButton from '../../../../components/Button';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import useLoader from '@/hooks/useLoader';

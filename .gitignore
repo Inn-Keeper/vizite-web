@@ -42,3 +42,9 @@ next-env.d.ts
 
 # idea
 .idea
+
+# api
+src/api/vizite
+
+openapi.json
+openapitools.json

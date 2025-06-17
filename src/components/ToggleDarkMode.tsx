@@ -1,15 +1,13 @@
 'use client';
 
-import { RootState, useAppDispatch, useAppSelector } from '@/store/store';
-import { toggleDarkMode } from '@/store/slices/themeSlice';
 import { useEffect } from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function ToggleDarkMode() {
-  const dispatch = useAppDispatch();
-  const darkMode = useAppSelector((state: RootState) => state.theme.darkMode) as boolean;
+  const { darkMode, toggleDarkMode } = useTheme();
 
-  useEffect(() => {
+  useEffect(() => {   
     document.documentElement.classList.toggle('dark', darkMode);
     return () => {
       document.documentElement.classList.remove('dark');
@@ -18,7 +16,7 @@ export default function ToggleDarkMode() {
 
   return (
     <button
-      onClick={() => dispatch(toggleDarkMode())}
+      onClick={() => toggleDarkMode()}
       className="px-2 py-1 rounded text-xl ml-2
         bg-purple-900/50 text-purple-700
         dark:bg-purple-700/50 dark:text-purple-600

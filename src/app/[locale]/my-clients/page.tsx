@@ -3,15 +3,14 @@
 import { useTranslations } from 'next-intl';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
-import { useAppSelector } from '@/store/store';
-import { RootState } from '@/store/store';
 import GradientContainer from '@/components/GradientContainer';
 import useClients from '@/hooks/useClients';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function ClientsPage() {
-  const { darkMode } = useAppSelector((state: RootState) => state.theme);
+  const { darkMode } = useTheme();
   const clients = useClients();
-  
+  console.log('darkMode', darkMode);
   const t = useTranslations('clients');
   const router = useRouter();
   return (

@@ -1,3 +1,5 @@
+import { User } from "@/api/vizite";
+
 type Client = {
   id: number;
   name: string;
@@ -25,8 +27,14 @@ type ServicesResponse = {
   items: Service[];
 };
 
+type UserResponse = {
+  items: User[];
+};
+
 export type { 
   Client, 
   Service, 
-  ServicesResponse
+  ServicesResponse,
+  User,
+  UserResponse
 };

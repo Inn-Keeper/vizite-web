@@ -2,19 +2,37 @@
 
 import { useTranslations } from 'next-intl';
 import { redirect, useRouter } from 'next/navigation';
-import { RootState, useAppDispatch, useAppSelector } from '@/store/store';
-import { setAuthenticated } from '@/store/slices/userSlice';
+import { useAuth } from '@/hooks/useAuth';
+import { useUser } from '@/hooks/useUser';
+import { useEffect } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function HomePage() {
   const t = useTranslations();
+  const { signOut, isAuthenticated } = useAuth();
   const router = useRouter();
-  const dispatch = useAppDispatch();
-
-  const isAuthenticated = useAppSelector((state: RootState) => state.user.isAuthenticated);
+  const { data: user } = useUser();
+  const queryClient = useQueryClient();
   
+  console.log('isAuthenticated home page', isAuthenticated);
+
+
   const handleLogout = () => {
-    dispatch(setAuthenticated(false));
+    queryClient.invalidateQueries({ queryKey: ['user'] });
+    signOut.mutate(undefined, {
+      onError: (error) => {
+        console.error('Logout error:', error);
+      },
+      onSuccess: () => {  
+        localStorage.removeItem('access_token');
+        console.log('Logout success');
+      },
+    });
   };
+
+  useEffect(() => {
+    console.log('user', user);
+  }, [user, isAuthenticated]);
 
   const buttons = [
     { label: t('navigation.myClients'), onClick: () => router.push(`/${t('routes.my-clients')}`) },
@@ -36,7 +54,7 @@ export default function HomePage() {
           </h1>
           <p className="text-lg sm:text-2xl font-medium mb-2">
             <span className="font-semibold text-purple-700 dark:text-purple-300">{t('home.welcome')}</span> 
-            &nbsp;<span className="font-bold text-gray-700 dark:text-gray-300">{t('home.name')}</span>
+            &nbsp;<span className="font-bold text-gray-700 dark:text-gray-300">{user?.name}</span>
           </p>
           <p className="text-sm sm:text-lg font-medium text-gray-600/40 dark:text-gray-100/40">
             { t('home.description')}

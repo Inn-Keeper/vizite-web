@@ -4,43 +4,64 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
-import AuthLogo from '../../components/AuthLogo';
-import AuthInput from '../../components/AuthInput';
-import AuthButton from '../../components/AuthButton';
-import { setAuthenticated } from '@/store/slices/userSlice';
-import { useAppDispatch } from '@/store/store';
+import Logo from '@/components/Logo';
+import Input from '@/components/Input';
+import Button from '@/components/Button';
 import { useRouter } from 'next/navigation';
 import useLoader from '@/hooks/useLoader';
+import { useSignIn } from '@/hooks/useSignIn';
+import { useQueryClient } from '@tanstack/react-query';
+import { PENDING_STATUS } from '@/lib/contants';
 
 export default function LoginForm() {
   const t = useTranslations();
-  
+  const Loader = useLoader();
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useAppDispatch();
   const router = useRouter();
-  const Loader = useLoader();
+  const signIn = useSignIn();
+  const queryClient = useQueryClient();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      dispatch(setAuthenticated(true));
-      router.push('/home');
-      setLoading(false);
-    }); // add delay to simulate login
+    signIn.mutate({ email, password }, {
+      onSuccess: (response) => {
+        // Store access_token in localStorage
+        const accessToken = response?.data?.meta?.accessToken;
+        if (accessToken) {
+          localStorage.setItem('access_token', accessToken);
+        }
+        // If user info is in the response, set it in the cache
+        const data = response?.data;
+        const userData = data?.attributes;
+        if (data && userData) {
+          queryClient.setQueryData(['user'], {
+            id: data.id ? Number(data.id) : undefined,
+            email: userData.email || '',
+            name: userData.name || '',
+            isAuthenticated: !!accessToken,
+          });
+        } else {
+          // If not, just invalidate/refetch the user query
+          queryClient.invalidateQueries({ queryKey: ['user'] });
+        }
+        router.push('/home');
+      },
+      onError: (error) => {
+        console.log('Login error', error);
+      },
+    });
   };
 
   return (
     <>  
-      {loading && <Loader />}
+      {signIn.status === PENDING_STATUS && <Loader />}
       <div className="flex flex-col items-center w-full">
-        <AuthLogo className="mb-8" />
+        <Logo className="mb-8" />
         <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-4">
-            <AuthInput
+            <Input
               name="email"
               type="email"
               autoComplete="email"
@@ -49,7 +70,7 @@ export default function LoginForm() {
               onChange={e => setEmail(e.target.value)}
             />
             <div className="relative">
-              <AuthInput
+              <Input
                 name="password" 
                 type={showPassword ? 'text' : 'password'}
                 autoComplete="off"
@@ -72,9 +93,9 @@ export default function LoginForm() {
             <Link href={`/${t('routes.auth.forgotPassword')}`} className="text-[#D97706] text-[14px] font-medium leading-[1.2] lowercase hover:underline">{t('auth.forgotPassword')}</Link>
           </div>
           
-          <AuthButton type="submit" disabled={loading} className="mt-2">
-            {t('auth.submit')}
-          </AuthButton>
+          <Button type="submit" disabled={signIn.status === PENDING_STATUS} className="mt-2">
+            {signIn.status === PENDING_STATUS ? t('auth.loading') : t('auth.submit')}
+          </Button>
         </form>
         <div className="flex flex-col items-center mt-4">
           <Link href={`/${t('routes.auth.register')}`} className="text-[#1F2937] text-[16px] font-medium leading-[1.2] lowercase hover:underline">{t('auth.createAccount')}</Link>
@@ -84,6 +105,8 @@ export default function LoginForm() {
             {t('terms.description')}
           </p>
         </div>
+        {signIn.isError && <div className="text-red-500 text-center mt-2">{t('auth.error')}</div>}
+        {signIn.isSuccess && <div className="text-green-500 text-center mt-2">{t('auth.success')}</div>}
       </div>
     </>
   );  

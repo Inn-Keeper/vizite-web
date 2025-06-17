@@ -1,4 +1,4 @@
-import AuthLogo from '../../components/AuthLogo';
+import AuthLogo from '../../../../components/Logo';
 
 export default function SplashScreen() {
   return (

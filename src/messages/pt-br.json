@@ -21,6 +21,14 @@
       "description": "Ao criar sua conta você concorda com {title} e {privacyPolicy}."
     }
   },
+  "actions": {
+    "buttons": {
+      "cancel": "Cancelar",
+      "save": "Salvar",
+      "saving": "Salvando...",
+      "add": "Adicionar"
+    }
+  },
   "routes": {
     "home": "home",
     "my-clients": "my-clients",
@@ -58,6 +66,9 @@
       "message": "Inicia sessão na sua conta",
       "button": "Iniciar Sessão"
     },
+    "loading": "Carregando...", 
+    "success": "Sucesso",
+    "error": "Erro",
     "hidePassword": "Ocultar Senha",
     "showPassword": "Mostrar Senha",
     "email": "Email",
@@ -91,7 +102,6 @@
   "clients": {
     "title": "Meus Clientes",
     "subtitle": "Gerencie seus clientes com facilidade",
-    "description": "Descrição de Meus Clientes",
     "add": "Novo Cliente",
     "search": "Buscar cliente...",
     "name": "Nome",
@@ -125,7 +135,12 @@
     "addPhoto": "Adicionar Foto", 
     "showAllNotes": "Ver Todas as Notas",
     "agenda": "Agenda",
-    "moreNotes": "Mais Notas"
+    "moreNotes": "Mais Notas",
+    "date": "Data",
+    "description": "Descrição",
+    "attachment": "Anexo",
+    "selectFile": "Selecionar Arquivo",
+    "noFileSelected": "Nenhum arquivo selecionado"
   },
   "support": {
     "title": "Suporte",

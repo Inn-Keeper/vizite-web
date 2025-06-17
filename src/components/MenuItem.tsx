@@ -1,4 +1,4 @@
-import { RootState, useAppSelector } from "@/store/store";
+import { useTheme } from "@/context/ThemeContext";
 import Link from "next/link";
 
 interface MenuItemProps {
@@ -12,7 +12,7 @@ interface MenuItemProps {
 
 export default function MenuItem({ href, label, className, onClick, icon, iconClassName }: MenuItemProps) {
 
-  const darkMode = useAppSelector((state: RootState) => state.theme.darkMode);  
+  const { darkMode } = useTheme();
   const hoverColor = darkMode ? 'hover:text-purple-300' : 'hover:text-purple-500';
   const hoverBgColor = darkMode ? 'hover:bg-gray-800/50' : 'hover:bg-gray-100/50';
   const hoverBgGradient = darkMode ? 'hover:bg-gradient-to-br from-purple-800/80 via-purple-500/50 to-purple-800/80' : 'hover:bg-gradient-to-br from-purple-100/50 via-purple-200/50 to-purple-100/50';
