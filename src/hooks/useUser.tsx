@@ -21,15 +21,18 @@ export function useUser() {
 
       // Replace with your actual endpoint to get the current user
       try {
-        const response = await usersApi.apiV1UsersMeGet();
+        const response = await usersApi.apiV1UsersIdGet({
+          id: 2,
+        });
         // Map response to your User type as needed
         return {
-          id: response.data.id,
-          email: response.data.attributes.email,
-          name: response.data.attributes.name,
+          id: response.data?.id,
+          email: response.data?.attributes?.email,
+          name: response.data?.attributes?.name,
           isAuthenticated: true,
         };
-      } catch (err) {
+      } catch (error) {
+        console.error(error);
         // If the token is invalid/expired, remove it and return null
         localStorage.removeItem("access_token");
         return null;

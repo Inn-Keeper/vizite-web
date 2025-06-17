@@ -23,6 +23,7 @@ export default function RegisterForm() {
       email: formData.get('email') as string,
       password: formData.get('password') as string,
     };
+    setLoading(true);
     signUp.mutate(data, {
       onSuccess: (response) => {
         // handle success, e.g., redirect or show message
@@ -31,6 +32,9 @@ export default function RegisterForm() {
       onError: (error) => {
         // handle error, e.g., show error message
         console.error('Registration error', error);
+      },
+      onSettled: () => {
+        setLoading(false);
       },
     });
   };

@@ -14,6 +14,14 @@ const eslintConfig = [
   {
     rules: {
       "@typescript-eslint/no-unused-vars": ["error"],
+      "@typescript-eslint/no-explicit-any": ["warning"],
+    },
+  },
+  {
+    files: ["./src/api/**"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": ["off"],
+      "@typescript-eslint/no-explicit-any": ["off"],
     },
   },
 ];
