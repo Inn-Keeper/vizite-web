@@ -12,6 +12,7 @@ export default function HomePage() {
   const { signOut, isAuthenticated } = useAuth();
   const router = useRouter();
   const { data: user } = useUser();
+
   const queryClient = useQueryClient();
   
   console.log('isAuthenticated home page', isAuthenticated);
