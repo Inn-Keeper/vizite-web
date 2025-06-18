@@ -18,7 +18,7 @@ export default function ClientLayout({ children, locale, messages }: Props) {
     <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-            <ClientLayoutContent>{children}</ClientLayoutContent>
+          <ClientLayoutContent>{children}</ClientLayoutContent>
       </QueryClientProvider>
     </NextIntlClientProvider>
   );

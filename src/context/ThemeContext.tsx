@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type ThemeContextType = {
   darkMode: boolean;
@@ -8,30 +8,12 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [darkMode, setDarkMode] = useState<boolean>(true); // default to dark
+// Create a client-only component for theme initialization
+function ThemeInitializer() {
+  const { darkMode } = useTheme();
 
-  // Use layout effect to avoid flicker and sync theme immediately after hydration
-  useLayoutEffect(() => {
-    const stored = localStorage.getItem('darkMode');
-    let isDark = true;
-    if (stored !== null) {
-      isDark = stored === 'true';
-    } else {
-      // Optionally respect system preference
-      isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    console.log('isDark', isDark);
-    setDarkMode(isDark);
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
+  // Apply theme on client-side only
   useEffect(() => {
-    localStorage.setItem('darkMode', String(darkMode));
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -39,10 +21,37 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, [darkMode]);
 
+  return null;
+}
+
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Always default to dark mode
+  const [darkMode, setDarkMode] = useState<boolean>(true);
+
+  // Use a separate effect for localStorage to avoid hydration mismatch
+  useEffect(() => {
+    // Check if we have a stored preference
+    const stored = localStorage.getItem('darkMode');
+
+    // If nothing stored yet, store the default dark mode
+    if (stored === null) {
+      localStorage.setItem('darkMode', 'true');
+    } else if (stored === 'false') {
+      // Only change from default if explicitly set to false
+      setDarkMode(false);
+    }
+  }, []);
+
+  // When theme changes, update localStorage
+  useEffect(() => {
+    localStorage.setItem('darkMode', String(darkMode));
+  }, [darkMode]);
+
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
-  console.log('darkMode', darkMode);
+
   return (
     <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
+      <ThemeInitializer />
       {children}
     </ThemeContext.Provider>
   );

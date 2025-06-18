@@ -3,7 +3,6 @@
 import GradientContainer from '@/components/GradientContainer';
 import { EnvelopeIcon, ChatBubbleLeftRightIcon, QuestionMarkCircleIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import React, { useState } from 'react';
 
 const FAQS = [
@@ -49,8 +48,7 @@ function FaqSection() {
               <ChevronDownIcon className={`w-5 h-5 ml-2 transition-transform ${openIndex === idx ? 'rotate-180' : ''}`} />
             </button>
             {openIndex === idx && (
-              <div className="px-4 pt-4 pb-4 text-purple-200 text-lg rounded-lg flex flex-row items-center gap-2">
-                <ChatBubbleLeftRightIcon className="w-5 h-5 text-gray-200" />
+              <div className="px-4 pt-4 pb-4 text-purple-200 rounded-lg flex flex-row items-center gap-2">
                 <span className="text-gray-200">{faq.answer}</span>
               </div>
             )}
@@ -86,13 +84,6 @@ export default function SupportPage() {
           <ChatBubbleLeftRightIcon className="w-6 h-6 text-green-400" />
           <span>{t('contact.whatsapp', { defaultValue: 'Falar no WhatsApp' })}</span>
         </a>
-        <Link
-          href="/faq"
-          className="flex items-center gap-3 bg-purple-900/30 rounded-lg p-4 text-white shadow transition-all duration-300 cursor-pointer hover:text-purple-200 hover:bg-purple-900/50 hover:shadow-lg hover:scale-105"
-        >
-          <QuestionMarkCircleIcon className="w-6 h-6 text-yellow-400" />
-          <span>{t('faq.title', { defaultValue: 'Perguntas Frequentes' })}</span>
-        </Link>
       </div>
       <FaqSection />
     </GradientContainer>

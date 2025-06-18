@@ -1,56 +1,103 @@
 'use client';
 
-import React, { useState } from 'react';
-import AuthLogo from '../../../../components/Logo';
-import AuthInput from '../../../../components/Input';
-import AuthButton from '../../../../components/Button';
-import Link from 'next/link';
+import React from 'react';
 import { useTranslations } from 'next-intl';
-import useLoader from '@/hooks/useLoader';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import FormWrapper from '@/components/FormWrapper';
+import { motion } from 'framer-motion';
+import Button from '@/components/Button';
+import { useForgotPassword } from '@/hooks/useForgotPassword';
+import { useForm, FormProvider } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { forgotPasswordSchema, ForgotPasswordFormValues } from '@/lib/validations/auth';
+import FormField from '@/components/FormField';
 
 export default function ForgotPasswordForm() {
   const t = useTranslations();
-  const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
-  const Loader = useLoader();
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    // TODO: handle forgot password logic
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+  const router = useRouter();
+  const forgotPassword = useForgotPassword();
+
+  const methods = useForm<ForgotPasswordFormValues>({
+    resolver: zodResolver(forgotPasswordSchema),
+    defaultValues: {
+      email: '',
+    },
+    mode: 'onBlur'
+  });
+
+  const onSubmit = async (values: ForgotPasswordFormValues) => {
+    await forgotPassword.mutateAsync({
+      email: values.email,
+    }, {
+      onSuccess: () => {
+        setTimeout(() => {
+          router.push('/auth/login');
+        }, 3000);
+      }
+    });
   };
 
   return (
-    <>
-      {loading && <Loader />}
-      <div className="flex flex-col items-center w-full"> 
-        <AuthLogo className="mb-8" />
-        <h2 className="text-2xl font-semibold text-[#1F2937] dark:text-gray-100 mb-2">{t('auth.forgotPassword')}</h2>
-        <p className="text-sm text-gray-600 dark:text-gray-300 text-center mb-4">
-          {t('auth.forgotPasswordDescription')}
-        </p>
-        <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
-          <AuthInput
-            label={t('auth.email')}
+    <FormWrapper
+      showLogo
+      isLoading={forgotPassword.isPending}
+      title={t('auth.forgotPassword.title')}
+    >
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="w-full flex flex-col gap-4">
+          <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 text-center">
+            {t('auth.forgotPassword.description')}
+          </p>
+
+          <FormField<ForgotPasswordFormValues>
             name="email"
             type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            placeholder={t('auth.email')}
-            showLabel={false}
+            label={t('auth.email')}
+            autoComplete="email"
+            placeholder={t('auth.emailPlaceholder')}
           />
-          <div className="flex flex-col items-center w-full">
-            <AuthButton type="submit" disabled={loading} className="mt-2">
-              {t('auth.forgotPassword')}
-            </AuthButton>
+
+          <Button
+            type="submit"
+            disabled={forgotPassword.isPending || methods.formState.isSubmitting}
+            className="mt-4"
+          >
+            {forgotPassword.isPending 
+              ? t('auth.loading') 
+              : t('auth.forgotPassword.submit')}
+          </Button>
+
+          <div className="flex justify-center mt-6">
+            <Link
+              href="/auth/login"
+              className="text-gray-900 dark:text-gray-100 text-base font-medium hover:underline transition-colors"
+            >
+              {t('auth.backToLogin')}
+            </Link>
           </div>
+
+          {forgotPassword.isError && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-red-500 text-center mt-4"
+            >
+              {t('auth.forgotPassword.error')}
+            </motion.div>
+          )}
+
+          {forgotPassword.isSuccess && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-green-500 text-center mt-4"
+            >
+              {t('auth.forgotPassword.success')}
+            </motion.div>
+          )}
         </form>
-        <div className="flex flex-col items-center mt-4 w-full">
-          <Link href={`/${t('routes.home')}`} className="text-purple-600/40 dark:text-gray-700 text-[16px] font-medium leading-[1.2] lowercase hover:underline">{t('auth.backToLogin')}</Link>
-        </div>
-      </div>
-    </>
+      </FormProvider>
+    </FormWrapper>
   );
-} 
+}

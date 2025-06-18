@@ -11,7 +11,7 @@ export const apiConfig = new Configuration({
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('access_token')} || ''`
+    'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
   }
 });
 

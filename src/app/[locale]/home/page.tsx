@@ -23,10 +23,12 @@ export default function HomePage() {
     signOut.mutate(undefined, {
       onError: (error) => {
         console.error('Logout error:', error);
+        localStorage.removeItem('access_token');
+        router.push(`/${t('routes.auth.login')}`);
       },
       onSuccess: () => {  
         localStorage.removeItem('access_token');
-        console.log('Logout success');
+        router.push(`/${t('routes.auth.login')}`);
       },
     });
   };

@@ -20,7 +20,7 @@ export default function SettingsPage() {
 
   return (
     <GradientContainer>
-      <div className="w-full mx-auto h-[60vh] mx-24">
+      <div className="w-full mx-auto min-h-[60vh] px-2 sm:px-4 md:px-8 lg:mx-24">
         <div className="flex flex-col items-center gap-2 mb-4">
           <Cog6ToothIcon className="w-10 h-10 text-purple-500" />
           <h2 className="text-3xl font-extrabold text-purple-700 dark:text-purple-300 text-center">

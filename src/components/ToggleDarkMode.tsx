@@ -1,18 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { useTheme } from '@/context/ThemeContext';
 
 export default function ToggleDarkMode() {
   const { darkMode, toggleDarkMode } = useTheme();
-
-  useEffect(() => {   
-    document.documentElement.classList.toggle('dark', darkMode);
-    return () => {
-      document.documentElement.classList.remove('dark');
-    };
-  }, [darkMode]);
 
   return (
     <button

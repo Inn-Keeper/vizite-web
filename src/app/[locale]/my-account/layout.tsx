@@ -45,9 +45,9 @@ export default function MyAccountLayout({
 
   return (
     <GradientContainer>
-      <div className="flex justify-start md:flex-row gap-6 w-full">
+      <div className="flex flex-col md:flex-row gap-6 w-full">
         {/* Sidebar Navigation */}
-        <div className="md:col-span-1 w-1/4">
+        <div className="w-full md:w-1/4 mb-4 md:mb-0">
           <div className='p-4'>
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-purple-500/60 flex items-center justify-center">
@@ -58,7 +58,7 @@ export default function MyAccountLayout({
                 <p className="text-sm text-gray-500 dark:text-gray-400">Member</p>
               </div>
             </div>
-            <nav className="space-y-2">
+            <nav className="space-y-2 gap-4">
               <Link
                 href="/my-account/profile"
                 className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg transition-colors ${
@@ -82,7 +82,7 @@ export default function MyAccountLayout({
                 <span>{t('settings')}</span>
               </Link>
               <button 
-                className="w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-red-500"
+                className="w-full flex items-center space-x-3 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-red-500"
                 onClick={() => {
                   // Add logout functionality here
                   handleLogout();
@@ -96,7 +96,7 @@ export default function MyAccountLayout({
         </div>
 
         {/* Main Content */}
-        <div className="md:col-span-3">
+        <div className="w-full md:flex-1">
           {children}
         </div>
       </div>

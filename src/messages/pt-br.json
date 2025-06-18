@@ -76,7 +76,15 @@
     "forgotPassword": "Esqueceu sua senha?",
     "forgotPasswordDescription": "Informe o seu e-mail de cadastro da sua conta para enviarmos um link para que possas alterar a sua senha.",
     "createAccount": "Criar conta",
-    "backToLogin": "Voltar para login"
+    "backToLogin": "Voltar para login",
+    "logoutSuccess": "Sessão encerrada com sucesso",
+    "logoutError": "Erro ao encerrar sessão",
+    "passwordPlaceholder": "Digite sua senha",
+    "confirmPasswordPlaceholder": "Confirme sua senha",
+    "namePlaceholder": "Digite seu nome",
+    "emailPlaceholder": "Digite seu e-mail",
+    "confirmPassword": "Confirme sua senha",
+    "name": "Nome"
   },
   "home": {
     "home": "Inicio",

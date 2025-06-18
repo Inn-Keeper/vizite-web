@@ -27,13 +27,9 @@ export default async function RootLayout({ children, params }: Props) {
 
   return (
     <ThemeProvider>
-      <html lang={locale}>
-        <body>
-          <ClientLayout locale={locale} messages={messages}>
-            {children}
-          </ClientLayout>
-        </body>
-      </html>
+      <ClientLayout locale={locale} messages={messages}>
+        {children}
+      </ClientLayout>
     </ThemeProvider>
   );
 }

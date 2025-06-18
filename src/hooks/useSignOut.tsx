@@ -8,9 +8,8 @@ export function useSignOut() {
   const api = new AuthenticationApi(apiConfig);
 
   return useMutation({
-    mutationFn: () => api.apiV1SignOutPost(),
+    mutationFn: () => api.apiV1SignOutPostRaw(),
     onSuccess: () => {
-      localStorage.removeItem('access_token');
       queryClient.removeQueries({ queryKey: ['user'] });
     }
   });
