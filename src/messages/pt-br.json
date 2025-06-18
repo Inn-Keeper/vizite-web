@@ -66,6 +66,14 @@
       "message": "Inicia sessão na sua conta",
       "button": "Iniciar Sessão"
     },
+    "forgotPassword": {
+      "title": "Esqueceu sua senha?",
+      "description": "Informe o seu e-mail de cadastro da sua conta para enviarmos um link para que possas alterar a sua senha.",
+      "submit": "Enviar",
+      "success": "Link enviado com sucesso",
+      "error": "Erro ao enviar link",
+      "backToLogin": "Voltar para login"
+    },  
     "loading": "Carregando...", 
     "success": "Sucesso",
     "error": "Erro",
@@ -73,8 +81,6 @@
     "showPassword": "Mostrar Senha",
     "email": "Email",
     "password": "Senha",
-    "forgotPassword": "Esqueceu sua senha?",
-    "forgotPasswordDescription": "Informe o seu e-mail de cadastro da sua conta para enviarmos um link para que possas alterar a sua senha.",
     "createAccount": "Criar conta",
     "backToLogin": "Voltar para login",
     "logoutSuccess": "Sessão encerrada com sucesso",

@@ -7,11 +7,10 @@ import { AuthenticationApi, Configuration, UsersApi } from "@/api/vizite";
  */
 export const apiConfig = new Configuration({
   basePath: process.env.NEXT_PUBLIC_API_BASE_URL,
-  // fetchApi: (url, options) => fetch(url, { ...options, credentials: 'include' }),
+  accessToken: () => localStorage.getItem('access_token') || '',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
   }
 });
 
